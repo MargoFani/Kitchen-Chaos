@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,14 @@ using UnityEngine.Lumin;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
+
+    public event EventHandler<OnSelectedCounterCahngedEventArgs> OnSelectedCounterChanged;
+    public class OnSelectedCounterCahngedEventArgs : EventArgs 
+    {
+        public ClearCounter selectedCounter;
+    }
+
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask countersLayerMask;
@@ -13,6 +22,14 @@ public class Player : MonoBehaviour
     private Vector3 lastInteractDir;
     private ClearCounter selectedCounter;
 
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("There is more than one Player instsnce");
+        }
+        Instance = this;
+    }
     private void Start()
     {
         gameInput.OnInteractAction += GameInput_OnInteractAction;
@@ -51,14 +68,14 @@ public class Player : MonoBehaviour
             {
                 //Has ClearCounter
                 if (clearCounter != selectedCounter)
-                    selectedCounter = clearCounter;
+                {
+                    SetSelectedCounter(clearCounter);
+                }
 
             }
-            else selectedCounter = null;
+            else SetSelectedCounter(null);
         }
-        else selectedCounter = null;
-
-        Debug.Log(selectedCounter);
+        else SetSelectedCounter(null);
     }
 
     private void HandleMovement()
@@ -112,5 +129,11 @@ public class Player : MonoBehaviour
 
         float rotateSpeed = 10f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+    }
+
+   private void SetSelectedCounter(ClearCounter selectedCounter)
+    {
+        this.selectedCounter = selectedCounter;
+        OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterCahngedEventArgs { selectedCounter = selectedCounter });
     }
 }

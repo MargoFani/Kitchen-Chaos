@@ -696,6 +696,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 46, y: 0, z: 0}
+--- !u!114 &527662833 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6177071556427464276, guid: 7edbf596dd754c040967fe739aafbc2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1178779305}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af42c21e79552b54f995ae1282636dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,6 +1000,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6177071556427464276, guid: 7edbf596dd754c040967fe739aafbc2a,
+        type: 3}
+      propertyPath: testing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177071556427464276, guid: 7edbf596dd754c040967fe739aafbc2a,
+        type: 3}
+      propertyPath: tomatoPrefab
+      value: 
+      objectReference: {fileID: 6109319135135155577, guid: 41e1f3c18b47fc74e810ccf0f3e620c6,
+        type: 3}
+    - target: {fileID: 6177071556427464276, guid: 7edbf596dd754c040967fe739aafbc2a,
+        type: 3}
+      propertyPath: kitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 239adab57378597448b875ceadf9c611,
+        type: 2}
+    - target: {fileID: 6177071556427464276, guid: 7edbf596dd754c040967fe739aafbc2a,
+        type: 3}
+      propertyPath: secondClearCounter
+      value: 
+      objectReference: {fileID: 527662833}
     - target: {fileID: 8120929752477670412, guid: 7edbf596dd754c040967fe739aafbc2a,
         type: 3}
       propertyPath: m_RootOrder
