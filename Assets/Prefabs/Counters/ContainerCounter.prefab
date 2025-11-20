@@ -71,7 +71,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7458045953579851903
 Transform:
   m_ObjectHideFlags: 0
@@ -227,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1ba85bfeead668d408d59b5a3f9fb434,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba85bfeead668d408d59b5a3f9fb434, type: 3}
@@ -334,6 +334,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Single door
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea8d8015153ce064cbdaa9932bf81a04,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea8d8015153ce064cbdaa9932bf81a04, type: 3}
@@ -540,7 +545,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: eb2eec5d81be49b4b95cf99cf6e91f48,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb2eec5d81be49b4b95cf99cf6e91f48, type: 3}
@@ -623,6 +628,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4841286013473667211, guid: 9a9137fa2b035d34e881701d2c178192,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 91e8fe3de9249fc44b7bdd8050062896,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
 --- !u!1 &4926828916018954189 stripped
