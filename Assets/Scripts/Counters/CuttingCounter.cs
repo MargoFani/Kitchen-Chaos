@@ -5,13 +5,10 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CuttingCounter : BaseCounter
+public class CuttingCounter : BaseCounter, IHasProgress
 {
-    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
-    public class OnProgressChangedEventArgs : EventArgs
-    {
-        public float progressNormalized;
-    }
+    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
+
 
     public event EventHandler OnCut;
 
@@ -22,15 +19,21 @@ public class CuttingCounter : BaseCounter
     {
         if (!HasKitchenObject())
         {
+            //проверяем что у игрока есть объект в руках, положить на доску можно любой
             if (player.HasKitchenObject())
             {
+                
                 player.GetKitchenObject().SetKitchenObjectParent(this);
-                cuttingProgress = 0;
-                CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSO(GetKitchenObject().GetKitchenObjectSO());
-                OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
-                {
-                    progressNormalized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
-                }); 
+                //если продукт можно нарезать
+                if (HasRecipeInput(GetKitchenObject().GetKitchenObjectSO())){
+
+                    cuttingProgress = 0;
+                    CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSO(GetKitchenObject().GetKitchenObjectSO());
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    {
+                        progressNormalized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
+                    }); 
+                }
             }
         }
         else
@@ -54,7 +57,7 @@ public class CuttingCounter : BaseCounter
             OnCut?.Invoke(this, EventArgs.Empty);
 
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSO(GetKitchenObject().GetKitchenObjectSO());
-            OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+            OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
             {
                 progressNormalized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
             });
