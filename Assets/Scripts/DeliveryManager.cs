@@ -15,6 +15,7 @@ public class DeliveryManager : MonoBehaviour
     private float spawnRecipeTimer;
     private float spawnRecipeTimerMax = 4f;
     private int waitingRecipeMax = 4;
+    private int successfulRecipesAmount;
 
     private void Awake()
     {
@@ -53,6 +54,7 @@ public class DeliveryManager : MonoBehaviour
             {
                 //player delivered right recipe
                 Debug.Log("player delivered correct recipe");
+                successfulRecipesAmount++;
                 waitingRrecipeSOList.RemoveAt(i);
                 OnRecipeListChanged?.Invoke(this, EventArgs.Empty);
 
@@ -68,5 +70,10 @@ public class DeliveryManager : MonoBehaviour
     public List<RecipeSO> GetWaitingRecipeSOList()
     {
         return waitingRrecipeSOList;
+    }
+
+    public int GetSuccessRecipesAmount()
+    {
+        return successfulRecipesAmount;
     }
 }
