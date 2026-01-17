@@ -23,11 +23,6 @@ public class DeliveryManagerUI : MonoBehaviour
         UpdateVisual();
     }
 
-    private void Instance_OnRecipeDelivered(object sender, EventArgs e)
-    {
-        throw new System.NotImplementedException();
-    }
-
     private void UpdateVisual()
     {
         foreach (Transform child in container)
